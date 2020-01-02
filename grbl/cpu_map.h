@@ -359,18 +359,18 @@
   //Control Digital Pin 6 which is Servo 2 signal pin on Ramps 1.4 board
   #define SPINDLE_TCCRA_REGISTER    TCCR5A
   #define SPINDLE_TCCRB_REGISTER    TCCR5B
-  #define SPINDLE_OCR_REGISTER      OCR5A //45-5B
-  #define SPINDLE_COMB_BIT          COM5A1 //45-5B
+  #define SPINDLE_OCR_REGISTER      OCR5C //
+  #define SPINDLE_COMB_BIT          COM5C1 //
 
   // 1/8 Prescaler, 16-bit Fast PWM mode
   #define SPINDLE_TCCRA_INIT_MASK ((1<<WGM40) | (1<<WGM41))
   #define SPINDLE_TCCRB_INIT_MASK ((1<<WGM42) | (1<<WGM43) | (1<<CS41))
-  #define SPINDLE_OCRA_REGISTER   OCR5C // 16-bit Fast PWM mode requires top reset value stored here.
+  #define SPINDLE_OCRA_REGISTER   OCR5C // 16-bit Fast PWM mode requires top reset value stored here.//
   #define SPINDLE_OCRA_TOP_VALUE  0x0400 // PWM counter reset value. Should be the same as PWM_MAX_VALUE in hex.
 
   // Define spindle output pins.
-  #define SPINDLE_PWM_DDR   DDRL
-  #define SPINDLE_PWM_PORT  PORTL
+  #define SPINDLE_PWM_DDR   DDRL //
+  #define SPINDLE_PWM_PORT  PORTL //
   #define SPINDLE_PWM_BIT   5 // MEGA2560 Digital Pin 44
 
 #endif
