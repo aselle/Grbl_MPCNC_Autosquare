@@ -412,6 +412,16 @@ ISR(TIMER1_COMPA_vect)
 
   if (busy) { return; } // The busy-flag is used to avoid reentering this interrupt
 
+    #ifdef DEFAULTS_RAMPS_BOARD
+    // Adding limit check status to implement hardware limits for RAMPS
+    // outside the changepin interrupt wich cannot be used
+    #ifdef ENABLE_RAMPS_HW_LIMITS
+      if (limits_get_state()) {
+        ramps_hard_limit();
+      }
+    #endif
+  #endif // Ramps Board
+
   // Set the direction pins a couple of nanoseconds before we step the steppers
   #ifdef DEFAULTS_RAMPS_BOARD
     DIRECTION_PORT(0) = (DIRECTION_PORT(0) & ~(1 << DIRECTION_BIT(0))) | st.dir_outbits[0];
